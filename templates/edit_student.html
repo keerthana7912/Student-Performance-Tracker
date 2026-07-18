@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>✏️ Edit Student</h1>
+
+    <form method="POST">
+
+        <label>Student Name</label>
+
+        <input
+            type="text"
+            name="name"
+            value="{{ student['name'] }}"
+            required
+        >
+
+        <label>Roll Number</label>
+
+        <input
+            type="number"
+            name="roll_number"
+            value="{{ student['roll_number'] }}"
+            readonly
+        >
+
+        <label>Python Marks</label>
+
+        <input
+            type="number"
+            name="python"
+            value="{{ student['python'] }}"
+            min="0"
+            max="100"
+            required
+        >
+
+        <label>Java Marks</label>
+
+        <input
+            type="number"
+            name="java"
+            value="{{ student['java'] }}"
+            min="0"
+            max="100"
+            required
+        >
+
+        <label>MySQL Marks</label>
+
+        <input
+            type="number"
+            name="mysql"
+            value="{{ student['mysql'] }}"
+            min="0"
+            max="100"
+            required
+        >
+
+        <br>
+
+        <button type="submit">
+            💾 Update Student
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>📝 Add Student Performance</h1>
+
+    <form method="POST">
+
+        <label>Student Name</label>
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter Student Name"
+            required
+        >
+
+        <label>Roll Number</label>
+        <input
+            type="number"
+            name="roll_number"
+            placeholder="Enter Roll Number"
+            required
+        >
+
+        <label>Python Marks</label>
+        <input
+            type="number"
+            name="python"
+            placeholder="Enter Python Marks"
+            min="0"
+            max="100"
+            required
+        >
+
+        <label>Java Marks</label>
+        <input
+            type="number"
+            name="java"
+            placeholder="Enter Java Marks"
+            min="0"
+            max="100"
+            required
+        >
+
+        <label>MySQL Marks</label>
+        <input
+            type="number"
+            name="mysql"
+            placeholder="Enter MySQL Marks"
+            min="0"
+            max="100"
+            required
+        >
+
+        <br>
+
+        <button type="submit">
+            ➕ Add Student
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

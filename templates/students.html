@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}
+Students List
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <h1>👨‍🎓 Student List</h1>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Python</th>
+                <th>Java</th>
+                <th>MySQL</th>
+                <th>Average</th>
+                <th>Grade</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+        {% if students %}
+
+
+            {% for student in students %}
+
+
+            <tr>
+
+                <!-- Roll Number / ID -->
+
+                <td>
+                    {{ student.roll_number }}
+                </td>
+
+
+                <!-- Student Name -->
+
+                <td>
+                    {{ student.name }}
+                </td>
+
+
+                <!-- Marks -->
+
+                <td>
+                    {{ student.python }}
+                </td>
+
+
+                <td>
+                    {{ student.java }}
+                </td>
+
+
+                <td>
+                    {{ student.mysql }}
+                </td>
+
+
+                <!-- Average -->
+
+                <td>
+                    {{ "%.2f"|format(student.average) }}
+                </td>
+
+
+                <!-- Grade -->
+
+                <td>
+                    {{ student.grade }}
+                </td>
+
+
+                <!-- Actions -->
+
+                <td>
+
+
+                    <a href="/edit/{{ student.roll_number }}">
+                        ✏️ Edit
+                    </a>
+
+
+                    &nbsp;
+
+
+                    <a href="/delete/{{ student.roll_number }}"
+                       onclick="return confirm('Are you sure you want to delete this student?')">
+
+                        🗑 Delete
+
+                    </a>
+
+
+                </td>
+
+
+            </tr>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <tr>
+
+                <td colspan="8">
+
+                    No students found.
+
+                </td>
+
+            </tr>
+
+
+        {% endif %}
+
+
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
+
+{% endblock %}

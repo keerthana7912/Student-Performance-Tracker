@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>🎓 Student Performance Tracker</h1>
+
+    <p style="text-align:center; font-size:18px; margin-bottom:30px;">
+        Welcome to the Student Performance Tracker System.
+        Manage student records, monitor academic performance,
+        and analyze results efficiently.
+    </p>
+
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h2>➕ Add Student</h2>
+            <p>Add a new student's details and marks.</p>
+            <br>
+            <a href="/add_student">Open</a>
+        </div>
+
+        <div class="card">
+            <h2>📋 Student List</h2>
+            <p>View, edit, and delete student records.</p>
+            <br>
+            <a href="/students">Open</a>
+        </div>
+
+        <div class="card">
+            <h2>📊 Dashboard</h2>
+            <p>View statistics, charts, and class performance.</p>
+            <br>
+            <a href="/dashboard">Open</a>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Search</h2>
+            <p>Search students using name or roll number.</p>
+            <br>
+            <a href="/search">Open</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

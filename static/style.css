@@ -1,0 +1,629 @@
+/* =====================================
+   STUDENT PERFORMANCE TRACKER
+   Theme: "Sticker Book" — bold comic-
+   style outlines, hard offset shadows,
+   confetti, and washi-tape corners.
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --ink:     #1A1A2E;   /* thick outline / text */
+    --paper:   #FFF9EC;   /* cream page */
+
+    --yellow:  #FFC93C;
+    --coral:   #FF6B5B;
+    --sky:     #29B6F6;
+    --grass:   #3DDC97;
+    --grape:   #9B5DE5;
+
+    --shadow-hard: 6px 6px 0 var(--ink);
+    --shadow-hard-lg: 9px 9px 0 var(--ink);
+}
+
+body{
+    min-height:100vh;
+    font-family:"Nunito", sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    background-image:
+        radial-gradient(var(--coral) 3px, transparent 3.5px),
+        radial-gradient(var(--sky) 3px, transparent 3.5px),
+        radial-gradient(var(--yellow) 3px, transparent 3.5px),
+        radial-gradient(var(--grass) 3px, transparent 3.5px);
+    background-size:120px 120px;
+    background-position:0 0, 30px 60px, 60px 10px, 90px 90px;
+}
+
+/* ==============================
+   Main Container
+============================== */
+
+.container{
+    position:relative;
+    width:90%;
+    max-width:1200px;
+    margin:56px auto;
+    padding:44px;
+
+    background:var(--paper);
+    border:4px solid var(--ink);
+    border-radius:28px 12px 28px 12px;
+    box-shadow:var(--shadow-hard-lg);
+}
+
+/* washi tape strip across the top-left corner */
+.container::before{
+    content:"";
+    position:absolute;
+    top:-18px;
+    left:40px;
+    width:110px;
+    height:34px;
+    background:repeating-linear-gradient(
+        45deg,
+        var(--yellow) 0 8px,
+        #FFE08A 8px 16px
+    );
+    border:2px solid var(--ink);
+    transform:rotate(-6deg);
+    opacity:.95;
+}
+
+/* ==============================
+   Headings
+============================== */
+
+h1{
+    text-align:center;
+    color:var(--grape);
+    font-family:"Fredoka", sans-serif;
+    font-weight:700;
+    font-size:42px;
+    -webkit-text-stroke:1.5px var(--ink);
+    transform:rotate(-1deg);
+    margin-bottom:18px;
+}
+
+h2{
+    display:inline-block;
+    color:var(--ink);
+    font-family:"Fredoka", sans-serif;
+    font-weight:600;
+    font-size:19px;
+    margin-bottom:18px;
+    padding:2px 10px;
+    background:var(--yellow);
+    border-radius:6px;
+    transform:rotate(-1deg);
+}
+
+h3{
+    color:var(--ink);
+    font-weight:800;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    opacity:.7;
+}
+
+/* ==============================
+   Navigation — sticker badges,
+   each rotated slightly.
+============================== */
+
+a{
+    display:inline-block;
+    padding:10px 20px;
+    margin:6px 10px 12px 0;
+
+    text-decoration:none;
+    color:var(--ink);
+    font-family:"Fredoka", sans-serif;
+    font-weight:600;
+    font-size:14px;
+
+    background:var(--sky);
+    border:3px solid var(--ink);
+    border-radius:999px;
+    box-shadow:var(--shadow-hard);
+
+    transition:transform .15s ease, box-shadow .15s ease;
+}
+
+a:nth-of-type(5n+1){ background:var(--sky);   transform:rotate(-2deg); }
+a:nth-of-type(5n+2){ background:var(--coral); transform:rotate(2deg);  }
+a:nth-of-type(5n+3){ background:var(--grass); transform:rotate(-1deg); }
+a:nth-of-type(5n+4){ background:var(--yellow);transform:rotate(1.5deg);}
+a:nth-of-type(5n+5){ background:var(--grape); color:#fff; transform:rotate(-2.5deg); }
+
+a:hover{
+    transform:translate(-3px,-3px) rotate(0deg);
+    box-shadow:9px 9px 0 var(--ink);
+}
+
+/* ==============================
+   Dashboard Cards — sticker
+   tiles, alternating tilt + hue.
+============================== */
+
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-top:30px;
+}
+
+
+.card{
+
+    min-height:190px;
+
+    padding:25px;
+
+    background:var(--yellow);
+
+    border:3px solid var(--ink);
+
+    border-radius:22px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-hard);
+
+    transition:transform .2s ease, box-shadow .2s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.card:nth-of-type(5n+1){ background:var(--yellow); transform:rotate(-2deg); }
+.card:nth-of-type(5n+2){ background:var(--coral);  transform:rotate(1.5deg); color:#fff; }
+.card:nth-of-type(5n+3){ background:var(--sky);    transform:rotate(-1deg); }
+.card:nth-of-type(5n+4){ background:var(--grass);  transform:rotate(2deg); }
+.card:nth-of-type(5n+5){ background:var(--grape);  transform:rotate(-1.5deg); color:#fff; }
+
+.card:hover{
+    transform:translateY(-6px) rotate(0deg) scale(1.03);
+    box-shadow:var(--shadow-hard-lg);
+}
+
+.card h1{
+    color:inherit;
+    -webkit-text-stroke:1px var(--ink);
+    font-size:44px;
+    transform:none;
+    margin-bottom:2px;
+}
+
+.card h3{
+    color:inherit;
+    opacity:.85;
+}
+
+/* ==============================
+   Charts
+============================== */
+
+.charts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(350px,1fr));
+    gap:28px;
+    margin-top:42px;
+}
+
+.chart-box{
+    background:#fff;
+    padding:22px;
+    border:3px solid var(--ink);
+    border-radius:20px;
+    box-shadow:var(--shadow-hard);
+}
+
+.chart-box h2{
+    display:block;
+    text-align:center;
+    width:fit-content;
+    margin:0 auto 18px;
+}
+
+/* ==============================
+   Forms
+============================== */
+
+form{
+    width:80%;
+    margin:auto;
+}
+
+label{
+    display:block;
+    font-family:"Fredoka", sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--ink);
+    margin:16px 0 6px;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px 14px;
+
+    border:3px solid var(--ink);
+    border-radius:14px;
+
+    background:#fff;
+    font-family:"Nunito", sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    outline:none;
+
+    transition:box-shadow .15s ease, transform .15s ease;
+}
+
+input:focus,
+select:focus{
+    box-shadow:4px 4px 0 var(--sky);
+    transform:translate(-2px,-2px);
+}
+
+button{
+    width:200px;
+    padding:14px;
+    margin-top:22px;
+
+    border:3px solid var(--ink);
+    border-radius:999px;
+
+    color:var(--ink);
+    font-family:"Fredoka", sans-serif;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+
+    background:var(--grass);
+    box-shadow:var(--shadow-hard);
+    transition:transform .12s ease, box-shadow .12s ease;
+}
+
+button:hover{
+    transform:translate(-3px,-3px);
+    box-shadow:9px 9px 0 var(--ink);
+}
+
+button:active{
+    transform:translate(3px,3px);
+    box-shadow:2px 2px 0 var(--ink);
+}
+
+/* ==============================
+   Tables — comic-strip header
+============================== */
+
+table{
+    width:100%;
+    margin-top:26px;
+    border-collapse:separate;
+    border-spacing:0;
+    background:#fff;
+    border:3px solid var(--ink);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+th{
+    padding:14px 12px;
+    color:var(--ink);
+    font-family:"Fredoka", sans-serif;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    text-align:center;
+    background:var(--yellow);
+    border-bottom:3px solid var(--ink);
+}
+
+th:nth-of-type(5n+1){ background:var(--yellow); }
+th:nth-of-type(5n+2){ background:var(--coral);  }
+th:nth-of-type(5n+3){ background:var(--sky);    }
+th:nth-of-type(5n+4){ background:var(--grass);  }
+th:nth-of-type(5n+5){ background:var(--grape); color:#fff; }
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:2px dashed #E4DEC8;
+}
+
+tr:hover td{
+    background:#FFF3D0;
+}
+
+/* ==============================
+   Search Box
+============================== */
+
+.search-box{
+    width:70%;
+    margin:auto;
+}
+
+/* ==============================
+   Page Layout — sidebar + main
+   (matches base.html structure:
+   .layout > .sidebar, .main >
+   .topbar, .content)
+============================== */
+
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    flex:0 0 250px;
+    width:250px;
+    padding:28px 20px;
+
+    background:var(--yellow);
+    border-right:4px solid var(--ink);
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+}
+
+.sidebar h2{
+    font-family:"Fredoka", sans-serif;
+    font-size:20px;
+    margin-bottom:10px;
+    transform:none;
+    -webkit-text-stroke:0;
+    color:var(--ink);
+    text-align:left;
+}
+
+/* sidebar links: reset the rotated inline "pill" look from the
+   general nav styling above, stack them as full-width buttons */
+.sidebar a{
+    display:block;
+    width:100%;
+    margin:0;
+    padding:12px 18px;
+    text-align:left;
+    transform:none !important;
+    border-radius:14px;
+}
+
+.sidebar a:hover{
+    transform:translate(-2px,-2px) !important;
+}
+
+.main{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    background:#fff;
+    border-bottom:3px solid var(--ink);
+}
+
+.topbar h2{
+    transform:none;
+    background:none;
+    padding:0;
+    font-size:22px;
+}
+
+.profile{
+    font-family:"Nunito", sans-serif;
+    font-weight:700;
+    padding:8px 16px;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:999px;
+}
+
+.content{
+    flex:1;
+    padding:36px;
+    overflow-x:auto;
+}
+
+/* ==============================
+   Mobile
+============================== */
+
+@media(max-width:700px){
+
+.layout{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+
+.container{
+    width:95%;
+    padding:24px;
+}
+
+.container::before{
+    left:20px;
+    width:80px;
+}
+
+h1{
+    font-size:30px;
+}
+
+.card{
+    transform:none !important;
+}
+
+form{
+    width:100%;
+}
+
+table{
+    font-size:12px;
+}
+
+button{
+    width:100%;
+}
+
+}
+
+/* =====================================
+   DASHBOARD SIZE OPTIMIZATION
+===================================== */
+
+/* Sidebar */
+
+.sidebar{
+    width:210px !important;
+    flex:0 0 210px !important;
+    padding:18px 15px !important;
+}
+
+.sidebar h2{
+    font-size:18px !important;
+    margin-bottom:18px !important;
+}
+
+.sidebar a{
+    padding:10px 14px !important;
+    font-size:14px !important;
+}
+
+/* Top Bar */
+
+.topbar{
+    padding:15px 25px !important;
+}
+
+.topbar h2{
+    font-size:20px !important;
+}
+
+.profile{
+    padding:8px 18px !important;
+    font-size:14px;
+}
+
+/* Content */
+
+.content{
+    padding:20px !important;
+}
+
+/* Main Container */
+
+.container{
+    width:96% !important;
+    max-width:1050px !important;
+    margin:20px auto !important;
+    padding:28px !important;
+}
+
+/* Dashboard Title */
+
+.container h1{
+    font-size:28px !important;
+    margin-bottom:20px !important;
+}
+
+/* Cards */
+
+.dashboard-cards{
+    gap:20px !important;
+}
+
+.card{
+    padding:18px !important;
+}
+
+.card h1{
+    font-size:28px !important;
+}
+
+.card h3{
+    font-size:13px !important;
+}
+
+/* Charts */
+
+.charts{
+    gap:20px !important;
+    margin-top:25px !important;
+}
+
+.chart-box{
+    padding:18px !important;
+}
+
+/* Tables */
+
+table{
+    margin-top:18px !important;
+}
+
+th,
+td{
+    padding:10px !important;
+}
+
+/* Forms */
+
+form{
+    width:70% !important;
+}
+
+button{
+    width:170px !important;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.footer{
+    text-align:center;
+    padding:15px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    background:#ffffff;
+    border-top:3px solid var(--ink);
+}

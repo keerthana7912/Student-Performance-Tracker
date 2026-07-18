@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+
+<h1>
+📊 Student Performance Dashboard
+</h1>
+
+
+
+<!-- ===========================
+     SUMMARY CARDS
+=========================== -->
+
+
+<div class="dashboard-cards">
+
+
+
+<div class="card">
+
+<h3>
+👨‍🎓 Total Students
+</h3>
+
+<h1>
+{{ total_students }}
+</h1>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+📈 Class Average
+</h3>
+
+<h1>
+{{ class_average }}%
+</h1>
+
+</div>
+
+
+
+
+
+{% if top_student %}
+
+
+<div class="card">
+
+
+<h3>
+🏆 Top Student
+</h3>
+
+
+<h2>
+{{ top_student["name"] }}
+</h2>
+
+
+<p>
+Average:
+{{ top_student["average"] }}
+</p>
+
+
+<p>
+Grade:
+{{ top_student["grade"] }}
+</p>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+
+
+{% if lowest_student %}
+
+
+<div class="card">
+
+
+<h3>
+📉 Needs Improvement
+</h3>
+
+
+<h2>
+{{ lowest_student["name"] }}
+</h2>
+
+
+<p>
+Average:
+{{ lowest_student["average"] }}
+</p>
+
+
+<p>
+Grade:
+{{ lowest_student["grade"] }}
+</p>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ===========================
+        CHARTS
+=========================== -->
+
+
+
+<div class="charts">
+
+
+
+<div class="chart-box">
+
+
+<h2>
+Grade Distribution
+</h2>
+
+
+<canvas id="gradeChart"></canvas>
+
+
+</div>
+
+
+
+
+
+<div class="chart-box">
+
+
+<h2>
+Subject Average
+</h2>
+
+
+<canvas id="subjectChart"></canvas>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script>
+
+
+// ============================
+// Grade Distribution Chart
+// ============================
+
+
+const gradeChart =
+document.getElementById(
+'gradeChart'
+);
+
+
+
+new Chart(
+
+gradeChart,
+
+{
+
+
+type:'pie',
+
+
+
+data:{
+
+
+
+labels:
+
+{{ grades | safe }},
+
+
+
+
+datasets:[{
+
+
+label:"Students",
+
+
+data:
+
+{{ grade_counts | safe }}
+
+
+
+}]
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+// ============================
+// Subject Average Chart
+// ============================
+
+
+
+const subjectChart =
+
+document.getElementById(
+'subjectChart'
+);
+
+
+
+
+
+new Chart(
+
+
+subjectChart,
+
+
+{
+
+
+type:'bar',
+
+
+
+data:{
+
+
+
+labels:[
+
+"Python",
+
+"Java",
+
+"MySQL"
+
+],
+
+
+
+
+
+datasets:[{
+
+
+label:
+
+"Average Marks",
+
+
+
+
+data:[
+
+
+{{ subject_average.python }},
+
+
+{{ subject_average.java }},
+
+
+{{ subject_average.mysql }}
+
+
+
+]
+
+
+
+}]
+
+
+
+}
+
+
+
+}
+
+
+
+);
+
+
+
+</script>
+
+
+
+{% endblock %}

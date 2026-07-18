@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Student Tracker
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <h2>🎓 Student Tracker</h2>
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/students">
+                👨‍🎓 Students
+            </a>
+
+            <a href="/add_student">
+                ➕ Add Student
+            </a>
+
+            <a href="/search">
+                🔍 Search
+            </a>
+
+            <a href="/topper">
+                🏆 Topper
+            </a>
+
+            <a href="/backup">
+                💾 Backup
+            </a>
+
+        </div>
+
+        <!-- Main Section -->
+        <div class="main">
+
+            <!-- Top Navigation -->
+            <div class="topbar">
+
+                <h2>Student Performance System</h2>
+
+                <div class="profile">
+                    👤 Admin
+                </div>
+
+            </div>
+
+            <!-- Page Content -->
+           <div class="content">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+<footer class="footer">
+    © 2026 Student Performance Tracker | Developed using Flask & MySQL
+</footer>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
