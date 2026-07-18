@@ -106,7 +106,6 @@ platform such as Render):
 - `requirements.txt` lists the dependencies (Flask, gunicorn).
 - `Procfile` starts the app with `gunicorn app:app`.
 
-**Live app:** _add your deployed URL here after deploying._
-
+**Live app:**https://student-performance-tracker-z5ru.onrender.com
 ## Developed By
 Keerthana V
