@@ -33,6 +33,7 @@ Search Student
 
     {% if students %}
 
+    <div class="table-responsive">
     <table>
 
         <thead>
@@ -70,6 +71,7 @@ Search Student
         </tbody>
 
     </table>
+    </div>
 
     {% elif request.method == "POST" %}
 
